@@ -1,6 +1,14 @@
 import React from 'react'
+import { useLoaderData } from 'react-router-dom'
+import Item from '../Item/Item'
+import { Link } from 'react-router-dom'
+
 
 const Home = () => {
+const items = useLoaderData().data 
+console.log(items)
+
+
   return (
     <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-24'>
       <div className='flex flex-col items-center justify-between lg:flex-row'>
@@ -17,13 +25,12 @@ const Home = () => {
           </div>
           <div className='flex flex-col items-center md:flex-row'>
             <a
-              href='/books'
+              href='/home'
               className='shadow-xl inline-flex items-center justify-center w-full h-12 px-5 mb-2 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
 </svg>
-
               <span className='mr-4 text-center'>Learn More</span>
             </a>
             
@@ -36,6 +43,26 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <div className='px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-2 lg:pt-9'>
+      <div className='grid gap-8 row-gap-5 mb-8 lg:grid-cols-4 lg:row-gap-8'>
+
+  {items.map(item=> <Item 
+  key={item.id}
+  item={item}
+
+  
+  
+  ></Item>)
+}
+
+
+
+</div>
+
+</div>
+
+
     </div>
   )
 }
